@@ -25,7 +25,9 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
- lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>">
+ lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>"
+ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"
+ xmlns:article="http://ogp.me/ns/article#" xmlns:place="http://ogp.me/ns/place#">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>
