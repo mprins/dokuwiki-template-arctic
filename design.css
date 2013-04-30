@@ -257,7 +257,7 @@ div.dokuwiki form#dw__recent select {
 div.dokuwiki a:link,
 div.dokuwiki a:visited {
   color: __extern__;
-  text-decoration: none;
+  text-decoration: underline;
 }
 div.dokuwiki a:hover,
 div.dokuwiki a:active {
