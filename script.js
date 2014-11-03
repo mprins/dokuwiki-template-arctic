@@ -1,11 +1,11 @@
 /**
- * javascript functionality for the arctic template
- * copies the mothod for dokuwikis TOC functionality
- * in order to keep the template XHTML valid
+ * javascript functionality for the arctic template.
+ * Copies the method for dokuwiki's TOC functionality
+ * in order to keep the template XHTML valid.
  */
 
 /**
- * Adds the toggle switch to the TOC
+ * Adds the toggle switch to the TOC.
  */
 function addSbLeftTocToggle() {
     if(!document.getElementById) return;
@@ -18,9 +18,7 @@ function addSbLeftTocToggle() {
     obj.className    = 'toc_close';
     obj.style.cursor = 'pointer';
 
-    //prependChild(header,obj);
     jQuery( header ).prepend( obj );
-    //obj.parentNode.onclick = toggleSbLeftToc;
     jQuery( obj.parentNode ).bind( 'click', toggleSbLeftToc );
     try {
        obj.parentNode.style.cursor = 'pointer';
@@ -29,7 +27,7 @@ function addSbLeftTocToggle() {
 }
 
 /**
- * This toggles the visibility of the Table of Contents
+ * This toggles the visibility of the Table of Contents.
  */
 function toggleSbLeftToc() {
   var toc = jQuery('#sb__left__toc__inside');
@@ -47,7 +45,7 @@ function toggleSbLeftToc() {
 }
 
 /**
- * Adds the toggle switch to the TOC
+ * Adds the toggle switch to the TOC.
  */
 function addSbRightTocToggle() {
     if(!document.getElementById) return;
@@ -60,10 +58,8 @@ function addSbRightTocToggle() {
     obj.className    = 'toc_close';
     obj.style.cursor = 'pointer';
 
-    //prependChild(header,obj);
     jQuery( header ).prepend( obj );
 
-    //obj.parentNode.onclick = toggleSbRightToc;
     jQuery( obj.parentNode ).bind( 'click', toggleSbRightToc );
     try {
        obj.parentNode.style.cursor = 'pointer';
@@ -72,7 +68,7 @@ function addSbRightTocToggle() {
 }
 
 /**
- * This toggles the visibility of the Table of Contents
+ * This toggles the visibility of the Table of Contents.
  */
 function toggleSbRightToc() {
   var toc = jQuery('#sb__right__toc__inside');

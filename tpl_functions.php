@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki Template Arctic Functions
+ * DokuWiki Template Arctic Functions.
  *
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author  Michael Klier <chi@chimeric.de>
@@ -66,6 +66,7 @@ function arctic_tpl_sidebar($pos) {
  * Dispatches the given sidebar type to return the right content
  *
  * @author Michael Klier <chi@chimeric.de>
+ * @author Mark C. Prins <mprins@users.sf.net>
  */
 function arctic_tpl_sidebar_dispatch($sb,$pos) {
     global $lang;
@@ -89,9 +90,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
             if(@page_exists($main_sb) && auth_quickaclcheck($main_sb) >= AUTH_READ) {
                 $always = tpl_getConf('main_sidebar_always');
                 if($always or (!$always && !getNS($ID))) {
-                    print '<div class="main_sidebar sidebar_box">' . DOKU_LF;
+                    print '<aside class="main_sidebar sidebar_box">' . DOKU_LF;
                     print p_sidebar_xhtml($main_sb,$pos) . DOKU_LF;
-                    print '</div>' . DOKU_LF;
+                    print '</aside>' . DOKU_LF;
                 }
             } elseif(!@page_exists($main_sb) && auth_quickaclcheck($main_sb) >= AUTH_CREATE) {
                 if(@file_exists(DOKU_TPLINC.'lang/'. $conf['lang'].'/nosidebar.txt')) {
@@ -100,9 +101,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
                     $out = p_render('xhtml', p_get_instructions(io_readFile(DOKU_TPLINC.'lang/en/nosidebar.txt')), $info);
                 }
                 $link = '<a href="' . wl($pname) . '" class="wikilink2">' . $pname . '</a>' . DOKU_LF;
-                print '<div class="main_sidebar sidebar_box">' . DOKU_LF;
+                print '<aside class="main_sidebar sidebar_box">' . DOKU_LF;
                 print str_replace('LINK', $link, $out);
-                print '</div>' . DOKU_LF;
+                print '</aside>' . DOKU_LF;
             }
             break;
 
@@ -113,9 +114,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
             if(!preg_match("/^".$user_ns.":.*?$|^".$group_ns.":.*?$/", $svID)) { // skip group/user sidebars and current ID
                 $ns_sb = _getNsSb($svID);
                 if($ns_sb && auth_quickaclcheck($ns_sb) >= AUTH_READ) {
-                    print '<div class="namespace_sidebar sidebar_box">' . DOKU_LF;
+                    print '<aside class="namespace_sidebar sidebar_box">' . DOKU_LF;
                     print p_sidebar_xhtml($ns_sb,$pos) . DOKU_LF;
-                    print '</div>' . DOKU_LF;
+                    print '</aside>' . DOKU_LF;
                 }
             }
             break;
@@ -128,17 +129,17 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
                 $user_sb = $user_ns . ':' . $user . ':' . $pname;
                 if(@page_exists($user_sb)) {
                     $subst = array('pattern' => array('/@USER@/'), 'replace' => array($user));
-                    print '<div class="user_sidebar sidebar_box">' . DOKU_LF;
+                    print '<aside class="user_sidebar sidebar_box">' . DOKU_LF;
                     print p_sidebar_xhtml($user_sb,$pos,$subst) . DOKU_LF;
-                    print '</div>';
+                    print '</aside>';
                 }
                 // check for namespace sidebars in user namespace too
                 if(preg_match('/'.$user_ns.':'.$user.':.*/', $svID)) {
                     $ns_sb = _getNsSb($svID); 
                     if($ns_sb && $ns_sb != $user_sb && auth_quickaclcheck($ns_sb) >= AUTH_READ) {
-                        print '<div class="namespace_sidebar sidebar_box">' . DOKU_LF;
+                        print '<aside class="namespace_sidebar sidebar_box">' . DOKU_LF;
                         print p_sidebar_xhtml($ns_sb,$pos) . DOKU_LF;
-                        print '</div>' . DOKU_LF;
+                        print '</aside>' . DOKU_LF;
                     }
                 }
 
@@ -153,9 +154,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
                     $group_sb = $group_ns.':'.$grp.':'.$pname;
                     if(@page_exists($group_sb) && auth_quickaclcheck(cleanID($group_sb)) >= AUTH_READ) {
                         $subst = array('pattern' => array('/@GROUP@/'), 'replace' => array($grp));
-                        print '<div class="group_sidebar sidebar_box">' . DOKU_LF;
+                        print '<aside class="group_sidebar sidebar_box">' . DOKU_LF;
                         print p_sidebar_xhtml($group_sb,$pos,$subst) . DOKU_LF;
-                        print '</div>' . DOKU_LF;
+                        print '</aside>' . DOKU_LF;
                     }
                 }
             }
@@ -163,9 +164,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
 
         case 'index':
             if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            print '<div class="index_sidebar sidebar_box">' . DOKU_LF;
+            print '<aside class="index_sidebar sidebar_box">' . DOKU_LF;
             print '  ' . p_index_xhtml($svID,$pos) . DOKU_LF;
-            print '</div>' . DOKU_LF;
+            print '</aside>' . DOKU_LF;
             break;
 
         case 'toc':
@@ -175,9 +176,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
                 // replace ids to keep XHTML compliance
                 if(!empty($toc)) {
                     $toc = preg_replace('/id="(.*?)"/', 'id="sb__' . $pos . '__\1"', $toc);
-                    print '<div class="toc_sidebar sidebar_box">' . DOKU_LF;
+                    print '<nav class="toc_sidebar sidebar_box">' . DOKU_LF;
                     print ($toc);
-                    print '</div>' . DOKU_LF;
+                    print '</nav>' . DOKU_LF;
                 }
             }
             break;
@@ -247,28 +248,28 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
 
         case 'trace':
             if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            print '<div class="trace_sidebar sidebar_box">' . DOKU_LF;
+            print '<nav class="trace_sidebar sidebar_box">' . DOKU_LF;
             print '  <h1>'.$lang['breadcrumb'].'</h1>' . DOKU_LF;
             print '  <div class="breadcrumbs">' . DOKU_LF;
             ($conf['youarehere'] != 1) ? tpl_breadcrumbs() : tpl_youarehere();
             print '  </div>' . DOKU_LF;
-            print '</div>' . DOKU_LF;
+            print '</nav>' . DOKU_LF;
             break;
 
         case 'extra':
             if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            print '<div class="extra_sidebar sidebar_box">' . DOKU_LF;
+            print '<aside class="extra_sidebar sidebar_box">' . DOKU_LF;
             @include(dirname(__FILE__).'/' . $pos .'_sidebar.html');
-            print '</div>' . DOKU_LF;
+            print '</aside>' . DOKU_LF;
             break;
 
         default:
             if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
             // check for user defined sidebars
             if(@file_exists(DOKU_TPLINC.'sidebars/'.$sb.'/sidebar.php')) {
-                print '<div class="'.$sb.'_sidebar sidebar_box">' . DOKU_LF;
+                print '<aside class="'.$sb.'_sidebar sidebar_box">' . DOKU_LF;
                 @require_once(DOKU_TPLINC.'sidebars/'.$sb.'/sidebar.php');
-                print '</div>' . DOKU_LF;
+                print '</aside>' . DOKU_LF;
             }
             break;
     }
@@ -359,7 +360,7 @@ function _getNsSb($id) {
 }
 
 /**
- * Checks wether the sidebar should be hidden or not
+ * Checks whether the sidebar should be hidden or not
  *
  * @author Michael Klier <chi@chimeric.de>
  */

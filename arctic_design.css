@@ -43,8 +43,8 @@ div.dokuwiki div.page {
   padding-top: 0;
 }
 
-div.dokuwiki div.left_page,
-div.dokuwiki div.right_page {
+div.dokuwiki main.left_page,
+div.dokuwiki main.right_page {
   text-align: justify;
   float: left;
   width: 72% !important;
@@ -52,7 +52,7 @@ div.dokuwiki div.right_page {
   padding: 2%;
 }
 
-div.dokuwiki div.center_page {
+div.dokuwiki main.center_page {
   text-align: justify;
   float: left;
   width: 49% !important;
@@ -70,6 +70,7 @@ div.footerinc {
 div.dokuwiki .footerinc a img {
   padding-top: __footer_padding__;
   padding-bottom: __footer_padding__;
+  border: 0;
 }
 
 /* ----- Sidebar -------------- */
@@ -133,7 +134,7 @@ div.dokuwiki div.right_sidebar ul {
   margin-left: 1.5em;
 }
 
-div.dokuwiki div.sidebar_box {
+div.dokuwiki aside.sidebar_box {
   border: 1px solid __border__;
   margin-bottom: 0.2em;
   padding: 0.3em;

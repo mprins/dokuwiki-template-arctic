@@ -2,13 +2,14 @@
 /**
  * German Language file for the Arctic Template
  * 
- * @author:     Michael Klier <chi@chimeric.de>
+ * @author      Michael Klier <chi@chimeric.de>
+ * @author      Mark C. Prins <mprins@users.sf.net>
  */
 
 $lang['sidebar']                        = 'Sidebar Einstellungen';
 $lang['pagename']                       = 'Seitenname der Sidebars';
 $lang['trace']                          = '"Krümelpfad" oberhalb der Seite anzeigen';
-$lang['main_sidebar_always']			= 'Haupt Sidebar in allen Namensräumen anzeigen';
+$lang['main_sidebar_always']            = 'Haupt Sidebar in allen Namensräumen anzeigen';
 $lang['wiki_actionlinks']               = 'Actionlink Darstellung';
 $lang['user_sidebar_namespace']         = 'Namensraum für Benutzer Sidebars';
 $lang['group_sidebar_namespace']        = 'Namensraum für Gruppen Sidebars';
@@ -19,3 +20,4 @@ $lang['right_sidebar_order']            = 'Reihenfolge der rechten Sidebars (Kom
 $lang['right_sidebar_content']          = 'Inhalt der rechten Sidebar';
 $lang['left_content_sidebar_other']     = 'Andere Sidebars (Komma getrennt)';
 $lang['search']                         = 'Position des Suchfelds (wenn 2 Sidebars benutzt werden)';
+$lang['opengraphheading']               = "OpenGraph Namespaceprefix an head Section zufügen";

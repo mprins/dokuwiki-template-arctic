@@ -2,7 +2,8 @@
 /**
  * english language file for the configuration manager
  * 
- * @author:     Michael Klier <chi@chimeric.de>
+ * @author      Michael Klier <chi@chimeric.de>
+ * @author      Mark C. Prins <mprins@users.sf.net>
  */
 
 $lang['sidebar']                        = "Sidebar setup";
@@ -21,4 +22,6 @@ $lang['right_sidebar_content_other']    = "Other sidebars (comma separated)";
 $lang['search']                         = "Position of the search field (applies only if 2 sidebars are used)";
 $lang['closedwiki']                     = "Closed Wiki (Navigation shows only the login link if not logged in)"; 
 $lang['hideactions']                    = "Hide all wiki actions to non logged in users";
+$lang['opengraphheading']               = "Add OpenGraph namespace prefixes to the head section";
+
 // vim:ts=4:sw=4:et:enc=utf-8:

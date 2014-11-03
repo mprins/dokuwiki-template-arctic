@@ -1,22 +1,22 @@
 <?php
 /**
- * DokuWiki Default Template
+ * DokuWiki Default Template.
  *
- * This is the template for the media manager popup
+ * This is the template for the media manager popup.
  *
  * @link   http://dokuwiki.org/templates
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Mark C. Prins <mprins@users.sf.net>
  */
 
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>" lang="<?php echo $conf['lang']?>" dir="ltr">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="<?php echo $conf['lang']?>" id="mediamanager" dir="<?php echo $lang['direction']?>">
+<head<?php if (tpl_getConf('opengraphheading')) { ?> prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# fb: http://ogp.me/ns/fb# place: http://ogp.me/ns/place# book: http://ogp.me/ns/book#"<?php } ?>>
+  <meta charset="utf-8" />
   <title>
     <?php echo hsc($lang['mediaselect'])?>
     [<?php echo strip_tags($conf['title'])?>]

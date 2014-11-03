@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki Arctic Template
+ * DokuWiki Arctic Template.
  *
  * This is the template you need to change for the overall look
  * of DokuWiki.
@@ -8,10 +8,10 @@
  * You should leave the doctype at the very top - It should
  * always be the very first line of a document.
  *
+ * @author Mark C. Prins <mprins@users.sf.net>
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author Michael Klier <chi@chimeric.de>
- * @link   http://wiki.splitbrain.org/template:arctic
- * @link   http://chimeric.de/projects/dokuwiki/template/arctic
+ * @link   http://www.dokuwiki.org/template:arctic
  */
 
 // must be run from within DokuWiki
@@ -22,14 +22,10 @@ global $ACT;
 // include custom arctic template functions
 require_once(dirname(__FILE__).'/tpl_functions.php');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
- lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>"
- xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"
- xmlns:article="http://ogp.me/ns/article#" xmlns:place="http://ogp.me/ns/place#">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="<?php echo $conf['lang']?>" id="document" dir="<?php echo $lang['direction']?>">
+<head<?php if (tpl_getConf('opengraphheading')) { ?> prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# fb: http://ogp.me/ns/fb# place: http://ogp.me/ns/place# book: http://ogp.me/ns/book#"<?php } ?>>
+  <meta charset="utf-8" />
   <title>
     <?php tpl_pagetitle()?>
     [<?php echo strip_tags($conf['title'])?>]
@@ -43,36 +39,41 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
 </head>
 <body>
+
+<div id="skiplinks" class="skiplinks">
+  <a href="#dokuwiki__content" class="skiplink"><?php echo $lang['skip_to_content']; ?></a>
+</div>
+
 <?php tpl_includeFile('topheader.html') ?>
 <div id="wrapper" class='<?php echo $ACT ?>'>
   <div class="dokuwiki">
 
     <?php html_msgarea()?>
 
-    <div class="stylehead">
+    <header class="stylehead">
       <div class="header">
         <div class="pagename">
           [[<?php tpl_link(wl($ID,'do=backlink'),tpl_pagetitle($ID,true))?>]]
         </div>
         <div class="logo">
-          <?php tpl_link(wl(),$conf['title'],'name="dokuwiki__top" accesskey="h" title="[ALT+H]"')?>
+          <?php tpl_link(wl(),$conf['title'],'id="dokuwiki__top" accesskey="h" title="[ALT+H]"')?>
         </div>
       </div>
-    
-      <?php if(tpl_getConf('trace')) {?> 
+
+      <?php if(tpl_getConf('trace')) {?>
       <div class="breadcrumbs">
         <?php ($conf['youarehere'] != 1) ? tpl_breadcrumbs() : tpl_youarehere();?>
       </div>
       <?php } ?>
 
       <?php tpl_includeFile('header.html') ?>
-      </div>
+    </header>
 
       <?php if(!$toolb) { ?>
       <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
       <div class="bar" id="bar__top">
         <div class="bar-left">
-          <?php 
+          <?php
             if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                 switch(tpl_getConf('wiki_actionlinks')) {
                   case('buttons'):
@@ -89,7 +90,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
                     }
                     tpl_actionlink('edit');
                     break;
-                } 
+                }
             }
           ?>
         </div>
@@ -140,29 +141,29 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left') ?>
         </div>
-        <div class="right_page">
+        <main class="right_page" id="dokuwiki__content" tabindex="-1">
           <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-        </div>
+        </main>
       <?php } else { ?>
-        <div class="page">
-          <?php tpl_content()?> 
-        </div> 
+        <main class="page" id="dokuwiki__content" tabindex="-1">
+          <?php tpl_content()?>
+        </main>
       <?php } ?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'right') { ?>
 
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
-        <div class="left_page">
+        <main class="left_page" id="dokuwiki__content" tabindex="-1">
           <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-        </div>
+        </main>
         <div class="right_sidebar">
           <?php tpl_searchform() ?>
           <?php arctic_tpl_sidebar('right') ?>
         </div>
       <?php } else { ?>
-        <div class="page">
-          <?php tpl_content() ?> 
-        </div> 
+        <main class="page" id="dokuwiki__content" tabindex="-1">
+          <?php tpl_content() ?>
+        </main>
       <?php }?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
@@ -172,26 +173,26 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left') ?>
         </div>
-        <div class="center_page">
+        <main class="center_page" id="dokuwiki__content" tabindex="-1">
           <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-        </div>
+        </main>
         <div class="right_sidebar">
           <?php if(tpl_getConf('search') == 'right') tpl_searchform() ?>
           <?php arctic_tpl_sidebar('right') ?>
         </div>
       <?php } else { ?>
-        <div class="page">
-          <?php tpl_content()?> 
-        </div> 
+        <main class="page" id="dokuwiki__content" tabindex="-1">
+          <?php tpl_content()?>
+        </main>
       <?php }?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'none') { ?>
-      <div class="page">
+      <main class="page" id="dokuwiki__content" tabindex="-1">
         <?php tpl_content() ?>
-      </div>
+      </main>
     <?php } ?>
 
-      <div class="stylefoot">
+      <footer class="stylefoot">
         <div class="meta">
           <div class="user">
           <?php tpl_userinfo()?>
@@ -200,7 +201,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php tpl_pageinfo()?>
           </div>
         </div>
-      </div>
+      </footer>
 
     <div class="clearer"></div>
 
@@ -211,7 +212,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { ?>
     <div class="bar" id="bar__bottom">
       <div class="bar-left">
-        <?php 
+        <?php
           switch(tpl_getConf('wiki_actionlinks')) {
             case('buttons'):
                 tpl_button('edit');
@@ -225,7 +226,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         ?>
       </div>
       <div class="bar-right">
-        <?php 
+        <?php
           switch(tpl_getConf('wiki_actionlinks')) {
             case('buttons'):
                 tpl_button('media');
