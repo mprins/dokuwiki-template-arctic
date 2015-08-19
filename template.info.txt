@@ -1,7 +1,7 @@
-base     wildwater
+base     wildwaterdetritus
 author   Samuel Fischer
 email    sf@notomorrow.de
-date     2014-10-30
+date     2015-08-19
 name     Modified version of Arctic Template for wild-water.nl
 desc     Yet Another Sidebar Template
 url      https://www.dokuwiki.org/template:arctic
