@@ -4,4 +4,4 @@ email    sf@notomorrow.de
 date     2016-09-16
 name     Modified version of Arctic Template for wild-water.nl
 desc     Yet Another Sidebar Template
-url      https://www.dokuwiki.org/template:arctic
+url      https://github.com/mprins/dokuwiki-template-arctic
