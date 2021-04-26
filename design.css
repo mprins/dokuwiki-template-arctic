@@ -202,7 +202,7 @@ div.dokuwiki button, {
   font-size: 100%;
   cursor: pointer;
   margin: 1px;
-  padding: 0.125em 0.4em;
+  /*padding: 0.125em 0.4em;*/
 }
 
 /* nice alphatransparency background except for IE <7 */
