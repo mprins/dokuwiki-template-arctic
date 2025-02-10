@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Arctic Template.
  *
@@ -104,8 +105,10 @@ require_once(__DIR__ . '/tpl_functions.php');
                         <?php
                         switch (tpl_getConf('wiki_actionlinks')) {
                             case ('buttons'):
-                                if (!tpl_getConf('closedwiki') ||
-                                    (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
+                                if (
+                                    !tpl_getConf('closedwiki') ||
+                                    (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))
+                                ) {
                                     echo (new Admin())->asHtmlButton();
                                     // echo (new \dokuwiki\Menu\Item\Revert())->asHtmlButton();
                                     echo (new Profile())->asHtmlButton();
@@ -120,8 +123,10 @@ require_once(__DIR__ . '/tpl_functions.php');
                                 }
                                 break;
                             case ('links'):
-                                if (!tpl_getConf('closedwiki') ||
-                                    (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
+                                if (
+                                    !tpl_getConf('closedwiki') ||
+                                    (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))
+                                ) {
                                     echo (new Admin())->asHtmlLink('action ', false);
                                     //  echo (new Revert())->asHtmlLink('action ', false);
                                     echo (new Profile())->asHtmlLink('action ', false);
