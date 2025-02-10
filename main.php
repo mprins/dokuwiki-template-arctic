@@ -15,6 +15,16 @@
  */
 
 // must be run from within DokuWiki
+use dokuwiki\Menu\Item\Admin;
+use dokuwiki\Menu\Item\Edit;
+use dokuwiki\Menu\Item\Index;
+use dokuwiki\Menu\Item\Login;
+use dokuwiki\Menu\Item\Media;
+use dokuwiki\Menu\Item\Profile;
+use dokuwiki\Menu\Item\Recent;
+use dokuwiki\Menu\Item\Subscribe;
+use dokuwiki\Menu\Item\Top;
+
 if (!defined('DOKU_INC')) {
     die();
 }
@@ -82,10 +92,10 @@ require_once(__DIR__ .'/tpl_functions.php');
                 if (!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                     switch (tpl_getConf('wiki_actionlinks')) {
                         case ('buttons'):
-                            echo (new \dokuwiki\Menu\Item\Edit())->asHtmlButton();
+                            echo (new Edit())->asHtmlButton();
                             break;
                         case ('links'):
-                            echo (new \dokuwiki\Menu\Item\Edit())->asHtmlLink('action ', false);
+                            echo (new Edit())->asHtmlLink('action ', false);
                             break;
                     }
                 }
@@ -97,33 +107,33 @@ require_once(__DIR__ .'/tpl_functions.php');
                     case ('buttons'):
                         if (!tpl_getConf('closedwiki') ||
                             (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
-                            echo (new \dokuwiki\Menu\Item\Admin())->asHtmlButton();
-//                            echo (new \dokuwiki\Menu\Item\Revert())->asHtmlButton();
-                            echo (new \dokuwiki\Menu\Item\Profile())->asHtmlButton();
-                            echo (new \dokuwiki\Menu\Item\Recent())->asHtmlButton();
-                            echo (new \dokuwiki\Menu\Item\Index())->asHtmlButton();
-                            echo (new \dokuwiki\Menu\Item\Login())->asHtmlButton();
+                            echo (new Admin())->asHtmlButton();
+                            // echo (new \dokuwiki\Menu\Item\Revert())->asHtmlButton();
+                            echo (new Profile())->asHtmlButton();
+                            echo (new Recent())->asHtmlButton();
+                            echo (new Index())->asHtmlButton();
+                            echo (new Login())->asHtmlButton();
                             if (tpl_getConf('sidebar') === 'none') {
                                 arctic_tpl_searchform();
                             }
                         } else {
-                            echo (new \dokuwiki\Menu\Item\Login())->asHtmlButton();
+                            echo (new Login())->asHtmlButton();
                         }
                         break;
                     case ('links'):
                         if (!tpl_getConf('closedwiki') ||
                             (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
-                            echo (new \dokuwiki\Menu\Item\Admin())->asHtmlLink('action ', false);
-//                            echo (new \dokuwiki\Menu\Item\Revert())->asHtmlLink('action ', false);
-                            echo (new \dokuwiki\Menu\Item\Profile())->asHtmlLink('action ', false);
-                            echo (new \dokuwiki\Menu\Item\Recent())->asHtmlLink('action ', false);
-                            echo (new \dokuwiki\Menu\Item\Index())->asHtmlLink('action ', false);
-                            echo (new \dokuwiki\Menu\Item\Login())->asHtmlLink('action ', false);
+                            echo (new Admin())->asHtmlLink('action ', false);
+                            //  echo (new Revert())->asHtmlLink('action ', false);
+                            echo (new Profile())->asHtmlLink('action ', false);
+                            echo (new Recent())->asHtmlLink('action ', false);
+                            echo (new Index())->asHtmlLink('action ', false);
+                            echo (new Login())->asHtmlLink('action ', false);
                             if (tpl_getConf('sidebar') === 'none') {
                                 arctic_tpl_searchform();
                             }
                         } else {
-                            echo (new \dokuwiki\Menu\Item\Login())->asHtmlLink('action ', false);
+                            echo (new Login())->asHtmlLink('action ', false);
                         }
                         break;
                 }
@@ -214,18 +224,17 @@ require_once(__DIR__ .'/tpl_functions.php');
     <?php if (!$toolb) { ?>
         <?php if (!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
             <?php if (!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { ?>
-
     <div class="bar" id="bar__bottom">
       <div class="bar-left">
                 <?php
                 switch (tpl_getConf('wiki_actionlinks')) {
                     case ('buttons'):
-                        echo (new \dokuwiki\Menu\Item\Edit())->asHtmlButton();
-                        echo (new \dokuwiki\Menu\Item\Recent())->asHtmlButton();
+                        echo (new Edit())->asHtmlButton();
+                        echo (new Recent())->asHtmlButton();
                         break;
                     case ('links'):
-                        echo (new \dokuwiki\Menu\Item\Edit())->asHtmlLink('action ', false);
-                        echo (new \dokuwiki\Menu\Item\Recent())->asHtmlLink('action ', false);
+                        echo (new Edit())->asHtmlLink('action ', false);
+                        echo (new Recent())->asHtmlLink('action ', false);
                         break;
                 }
                 ?>
@@ -235,14 +244,14 @@ require_once(__DIR__ .'/tpl_functions.php');
                 <?php
                 switch (tpl_getConf('wiki_actionlinks')) {
                     case ('buttons'):
-                        echo (new \dokuwiki\Menu\Item\Media())->asHtmlButton();
-                        echo (new \dokuwiki\Menu\Item\Subscribe())->asHtmlButton();
-                        echo (new \dokuwiki\Menu\Item\Top())->asHtmlButton();
+                        echo (new Media())->asHtmlButton();
+                        echo (new Subscribe())->asHtmlButton();
+                        echo (new Top())->asHtmlButton();
                         break;
                     case ('links'):
-                        echo (new \dokuwiki\Menu\Item\Media())->asHtmlLink('action ', false);
-                        echo (new \dokuwiki\Menu\Item\Subscribe())->asHtmlLink('action ', false);
-                        echo (new \dokuwiki\Menu\Item\Top())->asHtmlLink('action ', false);
+                        echo (new Media())->asHtmlLink('action ', false);
+                        echo (new Subscribe())->asHtmlLink('action ', false);
+                        echo (new Top())->asHtmlLink('action ', false);
                         break;
                 }
                 ?>

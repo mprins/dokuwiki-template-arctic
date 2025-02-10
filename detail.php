@@ -56,7 +56,8 @@ if (!defined('DOKU_INC')) {
             $imgNS = getNS($IMG);
             $authNS = auth_quickaclcheck("$imgNS:*");
         if ($authNS >= AUTH_UPLOAD) {
-            echo '<p><a href="'.media_managerURL(array('ns' => $imgNS, 'image' => $IMG)).'">'.$lang['img_manager'].'</a></p>';
+            echo '<p><a href="'.media_managerURL(array('ns' => $imgNS,
+                    'image' => $IMG)).'">'.$lang['img_manager'].'</a></p>';
         }
         ?>
 
