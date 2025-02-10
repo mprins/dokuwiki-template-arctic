@@ -1,7 +1,7 @@
 <?php
 /**
  * configuration-manager metadata for the arctic-template
- * 
+ *
  * @license     GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author      Michael Klier <chi@chimeric.de>
  * @author      Mark C. Prins <mprins@users.sf.net>
@@ -22,5 +22,3 @@ $meta['search']                   = array('multichoice', '_choices' => array('le
 $meta['closedwiki']               = array('onoff');
 $meta['hideactions']              = array('onoff');
 $meta['opengraphheading']         = array('onoff');
-
-//Setup vim:ts=2:sw=2:

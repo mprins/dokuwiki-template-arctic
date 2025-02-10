@@ -1,7 +1,7 @@
 <?php
 /**
  * Default configuration for the arctic template
- * 
+ *
  * @license     GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author      Michael Klier <chi@chimeric.de>
  * @author      Mark C. Prins <mprins@users.sf.net>
@@ -22,5 +22,3 @@ $conf['search']                     = 'left';                       // defines t
 $conf['closedwiki']                 = 0;                            // don't show sidebars for logged out users at all
 $conf['hideactions']                = 0;                            // hide all wiki related actions for non logged in users
 $conf['opengraphheading']           = 1;                            // add opengraph namespace prefixes to head section
-
-//Setup vim: ts=2 sw=2:
