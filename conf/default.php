@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Default configuration for the arctic template
  *

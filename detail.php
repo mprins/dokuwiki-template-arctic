@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Image Detail Template.
  *
@@ -37,7 +38,7 @@ if (!defined('DOKU_INC')) {
 
   <div class="page">
     <?php if ($ERROR) {
-        print $ERROR;
+        echo $ERROR;
     } else { ?>
     <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline', $IMG))?></h1>
 
@@ -47,7 +48,7 @@ if (!defined('DOKU_INC')) {
 
     <div class="img_detail">
       <p class="img_caption">
-        <?php print nl2br(hsc(tpl_img_getTag('simple.title'))); ?>
+        <?php echo nl2br(hsc(tpl_img_getTag('simple.title'))); ?>
       </p>
 
       <p>&larr; <?php echo $lang['img_backto']?> <?php tpl_pagelink($ID)?></p>
@@ -55,8 +56,7 @@ if (!defined('DOKU_INC')) {
             $imgNS = getNS($IMG);
             $authNS = auth_quickaclcheck("$imgNS:*");
         if ($authNS >= AUTH_UPLOAD) {
-            echo '<p><a href="'.media_managerURL(array('ns' => $imgNS,
-                    'image' => $IMG)).'">'.$lang['img_manager'].'</a></p>';
+            echo '<p><a href="' . media_managerURL(['ns' => $imgNS, 'image' => $IMG]) . '">' . $lang['img_manager'] . '</a></p>';
         }
         ?>
 
@@ -69,17 +69,17 @@ if (!defined('DOKU_INC')) {
             }
         }
 
-        foreach ($fields as $key => $tag) {
-            $t = array();
+        foreach ($fields as $tag) {
+            $t = [];
             if (!empty($tag[0])) {
-                $t = array($tag[0]);
+                $t = [$tag[0]];
             }
             if (is_array($tag[3])) {
                 $t = array_merge($t, $tag[3]);
             }
             $value = tpl_img_getTag($t);
             if ($value) {
-                echo '<dt>'.$lang[$tag[1]].':</dt><dd>';
+                echo '<dt>' . $lang[$tag[1]] . ':</dt><dd>';
                 if ($tag[2] === 'date') {
                     echo dformat($value);
                 } else {
