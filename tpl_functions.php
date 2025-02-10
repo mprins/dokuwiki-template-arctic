@@ -233,8 +233,7 @@ function arctic_tpl_sidebar_dispatch($sb, $pos): void
                 print '</div>' . DOKU_LF;
             } else {
                 /** @var AbstractItem[] $items */
-                $items =(new class extends AbstractMenu
-                {
+                $items = (new class extends AbstractMenu {
                     protected $view = 'page';
                     protected $types = [
                         'Admin',
@@ -249,7 +248,7 @@ function arctic_tpl_sidebar_dispatch($sb, $pos): void
                         'Login',
                         'Profile',
                         'Top'];
-                }) ->getItems();
+                })->getItems();
 
                 print '<div class="toolbox_sidebar sidebar_box">' . DOKU_LF;
                 print '  <div class="level1">' . DOKU_LF;
@@ -383,20 +382,6 @@ function p_index_xhtml($ns, $pos): void
     print '<div id="' . $pos . '__index__tree">' . DOKU_LF;
     print html_buildlist($data, 'idx', 'html_list_index', 'html_li_index');
     print '</div>' . DOKU_LF;
-}
-
-/**
- * Renders the Searchform
- * calls of tpl_searchform located in /inc/html.php
- * and adds a label
- *
- * @author Samuel Fischer <sf@notomorrow.de>
- */
-function arctic_tpl_searchform(): void
-{
-    #print '<label>' . DOKU_LF;
-    tpl_searchform();
-    #print '</label>' . DOKU_LF;
 }
 
 
