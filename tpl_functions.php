@@ -6,8 +6,6 @@
  * @author  Michael Klier <chi@chimeric.de>
  */
 
-// must be run from within DokuWiki
-
 use dokuwiki\Menu\AbstractMenu;
 use dokuwiki\Menu\Item\AbstractItem;
 use dokuwiki\Menu\Item\Login;

@@ -14,7 +14,6 @@
  * @link   http://www.dokuwiki.org/template:arctic
  */
 
-// must be run from within DokuWiki
 use dokuwiki\Menu\Item\Admin;
 use dokuwiki\Menu\Item\Edit;
 use dokuwiki\Menu\Item\Index;

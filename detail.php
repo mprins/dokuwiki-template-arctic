@@ -9,7 +9,6 @@
  * @author Mark C. Prins <mprins@users.sf.net>
  */
 
-// must be run from within DokuWiki
 if (!defined('DOKU_INC')) {
     die();
 }
