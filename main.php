@@ -82,17 +82,9 @@ require_once(__DIR__ .'/tpl_functions.php');
                 if (!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                     switch (tpl_getConf('wiki_actionlinks')) {
                         case ('buttons'):
-                        // check if new page button plugin is available
-                            if (!plugin_isdisabled('npd') && ($npd =& plugin_load('helper', 'npd'))) {
-                                $npd->html_new_page_button();
-                            }
                             echo (new \dokuwiki\Menu\Item\Edit())->asHtmlButton();
                             break;
                         case ('links'):
-                      // check if new page button plugin is available
-                            if (!plugin_isdisabled('npd') && ($npd =& plugin_load('helper', 'npd'))) {
-                                $npd->html_new_page_button();
-                            }
                             echo (new \dokuwiki\Menu\Item\Edit())->asHtmlLink('action ', false);
                             break;
                     }
