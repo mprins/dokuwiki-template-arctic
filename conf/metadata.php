@@ -1,4 +1,5 @@
 <?php
+
 /**
  * configuration-manager metadata for the arctic-template
  *
