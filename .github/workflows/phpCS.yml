@@ -24,6 +24,11 @@ jobs:
           DOKUWIKI: master
         run: sh travis.sh
 
+      - name: check files
+        run: |
+          ls -l lib/tpl
+          ls -l lib/tpl/wildwater
+
       - name: run PHP codesniffer
         continue-on-error: true
         run: phpcs -v --standard=_test/phpcs_MigrationAdjustments.xml --report-full --report-checkstyle=./phpcs-report.xml lib/tpl/wildwater
