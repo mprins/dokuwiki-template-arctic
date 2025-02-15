@@ -51,7 +51,7 @@ if (!defined('DOKU_INC')) {
         <?php echo nl2br(hsc(tpl_img_getTag('simple.title'))); ?>
       </p>
 
-      <p>&larr; <?php echo $lang['img_backto']?> <?php tpl_pagelink($ID)?></p>
+      <p>&larr; <?php echo $lang['btn_img_backto']?> <?php tpl_pagelink($ID)?></p>
         <?php
             $imgNS = getNS($IMG);
             $authNS = auth_quickaclcheck("$imgNS:*");
@@ -74,7 +74,7 @@ if (!defined('DOKU_INC')) {
             if (!empty($tag[0])) {
                 $t = [$tag[0]];
             }
-            if (is_array($tag[3])) {
+            if (is_array($tag[3] ?? null)) {
                 $t = array_merge($t, $tag[3]);
             }
             $value = tpl_img_getTag($t);
