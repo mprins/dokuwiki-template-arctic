@@ -1,0 +1,7 @@
+_test/dummy
+
+.github/workflows/phpCS.yml
+.github/workflows/maintenance.yml
+.github/workflows/autoFix.yml
+.github/dependabot.yml
+.github/ISSUE_TEMPLATE.md
