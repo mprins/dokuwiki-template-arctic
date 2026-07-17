@@ -11,6 +11,7 @@ use dokuwiki\Menu\AbstractMenu;
 use dokuwiki\Menu\Item\AbstractItem;
 use dokuwiki\Menu\Item\Login;
 
+// phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 if (!defined('DOKU_INC')) {
     die();
 }

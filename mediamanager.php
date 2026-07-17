@@ -14,7 +14,10 @@
 if (!defined('DOKU_INC')) {
     die();
 }
+global $lang;
+global $conf;
 
+// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $conf['lang']?>" id="mediamanager" dir="<?php echo $lang['direction']?>">

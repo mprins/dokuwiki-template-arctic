@@ -13,7 +13,10 @@
 if (!defined('DOKU_INC')) {
     die();
 }
-
+global $ID;
+global $lang;
+global $conf;
+// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $conf['lang']?>" id="detail" dir="<?php echo $lang['direction']?>">
