@@ -11,6 +11,7 @@ use dokuwiki\Menu\AbstractMenu;
 use dokuwiki\Menu\Item\AbstractItem;
 use dokuwiki\Menu\Item\Login;
 
+// phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 if (!defined('DOKU_INC')) {
     die();
 }
@@ -59,7 +60,7 @@ function arctic_tpl_sidebar($pos): void
 
     // process contents by given order
     foreach ($sb_order as $sb) {
-        if (in_array($sb, $sb_content)) {
+        if (in_array($sb, $sb_content, true)) {
             $key = array_search($sb, $sb_content);
             unset($sb_content[$key]);
             arctic_tpl_sidebar_dispatch($sb, $pos);

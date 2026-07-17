@@ -30,7 +30,10 @@ if (!defined('DOKU_INC')) {
 }
 
 global $ACT;
-
+global $ID;
+global $lang;
+global $conf;
+// phpcs:disable Generic.Files.LineLength.TooLong
 // include custom arctic template functions
 require_once(__DIR__ . '/tpl_functions.php');
 ?>
@@ -85,11 +88,17 @@ require_once(__DIR__ . '/tpl_functions.php');
         </header>
 
         <?php if (!$toolb) { ?>
-            <?php if (!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
+            <?php if (
+            !tpl_getConf('hideactions') || tpl_getConf('hideactions') &&
+                    isset($_SERVER['REMOTE_USER'])
+) { ?>
                 <div class="bar" id="bar__top">
                     <div class="bar-left">
                         <?php
-                        if (!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
+                        if (
+                            !tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') &&
+                                        isset($_SERVER['REMOTE_USER']))
+                        ) {
                             switch (tpl_getConf('wiki_actionlinks')) {
                                 case ('buttons'):
                                     echo (new Edit())->asHtmlButton();

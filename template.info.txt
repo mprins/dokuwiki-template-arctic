@@ -1,7 +1,8 @@
 base     wildwater
 author   Mark C. Prins
 email    mprins@users.sf.net
-date     2025-02-15
+date     2026-07-17
 name     Modified version of Arctic Template for wild-water.nl
 desc     Yet Another Sidebar Template
 url      https://github.com/mprins/dokuwiki-template-arctic
+minphp   8.2
